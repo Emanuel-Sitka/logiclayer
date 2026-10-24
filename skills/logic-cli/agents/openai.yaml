@@ -1,0 +1,3 @@
+interface:
+  display_name: "Logic engine"
+  short_description: "Record facts and rules, prove goals with a proof tree"

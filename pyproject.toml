@@ -1,0 +1,50 @@
+[project]
+name = "logiclayer"
+version = "0.1.0"
+description = "A command-line logic engine for coding agents: assert facts and rules, query them, and get answers with a proof and the assumptions they rest on."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Emanuel Sitka" }]
+requires-python = ">=3.11"
+dependencies = []
+keywords = ["prolog", "logic", "agents", "reasoning", "explainability"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Prolog",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://github.com/Emanuel-Sitka/logiclayer"
+
+[project.scripts]
+logic = "logiclayer.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[build-system]
+# 77 is the first version that understands `license` as an SPDX identifier.
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["logiclayer*"]
+
+[tool.setuptools.package-data]
+# The viewer is built from web/ by vite and committed, so the tool works
+# without a Node toolchain installed.
+logiclayer = ["viewer/*.html", "engines/*.pl"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["F", "E9", "B", "UP", "SIM", "I"]

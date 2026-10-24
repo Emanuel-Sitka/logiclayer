@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Node. The built viewer in logiclayer/viewer/ is committed; its inputs are not.
+web/node_modules/
+
+# Knowledge bases created while trying the tool or rerunning the benchmarks
+/logic.jsonl
+benchmark/**/*.jsonl
+
+# Viewer pages written by `logic query --html` or `logic export --format html`
+/*.html
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+excalidraw/*

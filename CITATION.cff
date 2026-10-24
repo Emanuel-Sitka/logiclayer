@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If this work informs yours, please cite it as below."
+type: software
+title: "Logic Layer: a command-line logic engine for coding agents"
+authors:
+  - family-names: Sitka
+    given-names: Emanuel
+repository-code: "https://github.com/Emanuel-Sitka/logiclayer"
+license: MIT
+abstract: >-
+  A command-line logic engine for coding agents. The agent writes facts and
+  rules into SWI-Prolog and gets answers with a proof and the assumptions they
+  rest on. Includes a benchmark comparing an agent with and without the tool,
+  in which both scored 20 out of 20.
+keywords:
+  - prolog
+  - logic
+  - agents
+  - reasoning
+  - explainability
