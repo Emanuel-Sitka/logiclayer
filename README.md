@@ -3,7 +3,19 @@
 A command-line logic engine for coding agents. The agent writes facts and rules
 into it, asks it questions, and gets back answers with a proof. Reasoning hence moves from token chaining to a dedicated reasoning engine, with the added benefit of transparency for human observers.
 
-![A proof tree, the dependency graph between predicates, and the question at the top](docs/images/proof.png)
+![The agent reasons in text and, when it chooses to, declares and asserts facts and rules into a ledger and queries SWI-Prolog, which returns a proof with its assumptions. A human can inspect the ledger and proofs.](docs/images/overview.png)
+
+The agent reasons in text as usual. When it decides a step is worth making
+explicit, it writes what it has understood into the logic layer as facts and
+rules, each recorded with the sentence it came from and the reason for the
+translation. It then asks the engine, SWI-Prolog, to prove what it needs. The
+answer comes back with a proof and the assumptions it rested on, and the agent
+carries on reasoning with it. A person can read the same ledger and proofs in
+the viewer.
+
+[docs/concepts.md](docs/concepts.md) explains the ideas from scratch, for
+anyone new to logic programming: facts and rules, why "not proved" is not
+"false", and why the order of conditions in a rule matters under negation.
 
 **This is an experiment, and no longer in active development.** The idea was that an agent
 reasoning through a real logic engine would be more reliable than the same
@@ -67,6 +79,8 @@ $ logic export --format html --out kb.html         # the whole knowledge base
 Each command writes one HTML file. Open it by double-clicking it or in any
 browser. It shows the proof, the graph of how predicates depend on each other,
 and the whole ledger with the reasoning behind each clause.
+
+![A proof tree, the dependency graph between predicates, and the question at the top](docs/images/proof.png)
 
 ![The ledger, with a withdrawn clause and the reason it was withdrawn](docs/images/ledger.png)
 
@@ -170,24 +184,6 @@ Not tested: thousands of facts rather than dozens, repeated runs, long or
 resumed sessions, and domains other than access-control policy. One run per
 side, so treat this as a careful pilot study rather than a conclusive result.
 The problem, answers and both transcripts are in [`benchmark/`](benchmark/).
-
----
-
-## How it works
-
-![The agent reasons in text and, when it chooses to, declares and asserts facts and rules into a ledger and queries SWI-Prolog, which returns a proof with its assumptions. A human can inspect the ledger and proofs.](docs/images/overview.png)
-
-The agent reasons in text as usual. When it decides a step is worth making
-explicit, it writes what it has understood into the logic layer as facts and
-rules, each recorded with the sentence it came from and the reason for the
-translation. It then asks the engine, SWI-Prolog, to prove what it needs. The
-answer comes back with a proof and the assumptions it rested on, and the agent
-carries on reasoning with it. A person can read the same ledger and proofs in
-the viewer.
-
-[docs/concepts.md](docs/concepts.md) explains the ideas from scratch, for
-anyone new to logic programming: facts and rules, why "not proved" is not
-"false", and why the order of conditions in a rule matters under negation.
 
 ---
 
